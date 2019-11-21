@@ -10,17 +10,24 @@ export default new Vuex.Store({
     tareas: []
   },
   mutations: {
-
+    setTareas(state, tareas){
+      state.tareas = tareas
+    }
   },
   actions: {
     getTareas({commit}){
+      const tareas = []
       db.collection('tareas').get()
       .then(snapshot => {
         snapshot.forEach( doc => {
-          console.log(doc.id);
-          console.log(doc.data());
+         // console.log(doc.id);
+         // console.log(doc.data());
+         let tarea = doc.data();
+         tarea.id = doc.id;
+         tareas.push(tarea);
         })
       })
+      commit('setTareas', tareas)
     }
   },
   modules: {

@@ -1,11 +1,17 @@
 <template>
     <div>
         <h1>lista de tareas</h1>
+        <ul>
+            <li v-for="item of tareas" :key="item.id">
+                {{ item.id }} - {{ item.nombre }}
+
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions, mapState} from 'vuex'
 export default {
     name: 'Inicio',
     methods: {
@@ -13,6 +19,9 @@ export default {
     },
     created(){
         this.getTareas();
+    },
+    computed:{
+        ...mapState(['tareas'])
     }
     
 }
