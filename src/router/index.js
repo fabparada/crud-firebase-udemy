@@ -8,6 +8,16 @@ const routes = [
     path: '/',
     name: 'inicio',
     component: () => import(/* webpackChunkName: "about" */ '../views/Inicio.vue')
+  },
+  {
+    path: '/editar/:id',
+    name: 'editar',
+    component: () => import(/* webpackChunkName: "editar" */ '../views/Editar.vue')
+  },
+  {
+    path: '/agregar',
+    name: 'agregar',
+    component: () => import(/* webpackChunkName: "agregar" */ '../views/Agregar.vue')
   }
 ]
 
