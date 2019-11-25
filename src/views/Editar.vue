@@ -2,8 +2,8 @@
     <div>
         <h1>Editar</h1>
         {{id}} - {{tarea}}
-        <form @submit.prevent="editarTarea(tarea)">
-            <input type="text" name="" id="" v-model="tarea.nombre">
+        <form @submit.prevent="editarTarea(tarea)" class="form-inline">
+            <input type="text" name="" id="" v-model="tarea.nombre" class="form-control">
             <button type="submit">Editar</button>
         </form>
     </div>

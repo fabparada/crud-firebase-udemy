@@ -2,14 +2,19 @@
     <div>
         <h1>lista de tareas</h1>
         <router-link :to="{name: 'agregar'}"> 
-            <button>agregar</button>
+            <button class="btn btn-block btn-success">agregar</button>
         </router-link>
-        <ul>
-            <li v-for="item of tareas" :key="item.id">
+        <ul class="list-group mt-5">
+            <li class="list-group-item" 
+            v-for="item of tareas" :key="item.id">
                 {{ item.id }} - {{ item.nombre }}
-                <router-link :to="{name: 'editar', params:{ id: item.id }}"> 
-                    <button>Editar</button> 
-                </router-link>
+                <div class="float-right">
+                     <router-link class="btn btn-warning "
+                    :to="{name: 'editar', params:{ id: item.id }}"> 
+                        Editar
+                    </router-link>
+                    <button class="btn btn-danger ml-4" @click="eliminarTarea(item.id)">Eliminar tarea</button>
+                </div>
             </li>
         </ul>
     </div>
@@ -20,7 +25,7 @@ import {mapActions, mapState} from 'vuex'
 export default {
     name: 'Inicio',
     methods: {
-        ...mapActions(['getTareas'])
+        ...mapActions(['getTareas','eliminarTarea'])
     },
     created(){
         this.getTareas();
